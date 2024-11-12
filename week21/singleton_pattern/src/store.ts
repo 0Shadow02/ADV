@@ -7,8 +7,17 @@ interface Game {
 
 export class GameManager {
      game :Game[] = []
-     constructor(){
+     private static instance :GameManager
+     private constructor(){
         this.game=[]
+     }
+
+     static getInstance(){
+        if(GameManager.instance){
+            return GameManager.instance
+        }
+        GameManager.instance = new GameManager()
+        return GameManager.instance
      }
 
      addMove(gameId: string,move:string){
@@ -19,11 +28,12 @@ export class GameManager {
 
      addGame(gameId:string){
         const Game = {
-            id : gameId,
+            gameId : gameId,
             whitePlayer:"shadow",
             blackPlayer: "dark",
             moves:[]
         }
+        this.game.push(Game)
      }
 
      log(){
@@ -31,4 +41,4 @@ export class GameManager {
      }
 }
 
-export const gameManager = new GameManager()
+export const gameManager = GameManager.getInstance()

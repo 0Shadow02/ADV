@@ -4,9 +4,5 @@ const logger_1 = require("./logger");
 const store_1 = require("./store");
 (0, logger_1.startLogger)();
 setInterval(() => {
-    store_1.games.push({
-        whitePlayer: "shadow",
-        blackPlayer: "dark",
-        moves: []
-    });
+    store_1.gameManager.addGame(Math.random().toString());
 }, 5000);
