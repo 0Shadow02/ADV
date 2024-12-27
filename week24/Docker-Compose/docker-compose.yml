@@ -1,0 +1,25 @@
+version: '4'
+services:
+  postgres:
+     image: postgres
+     container_name: mydatabase
+     ports:
+        - "5432:5432"
+     volumes:
+        - myvol:/data/db
+     environment:
+      POSTGRES_PASSWORD: mysecretpassword
+  
+  backend:
+      build: .
+      container_name: mybackend
+      depends_on:
+          - postgres
+      ports:
+        - "3000:3000"
+      environment:
+        DATABASE_URL: "postgresql://postgres:mysecretpassword@mydatabase:5432/postgres"
+  
+volumes:
+   myvol:
+   
