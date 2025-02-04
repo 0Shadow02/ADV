@@ -7,7 +7,7 @@ message Person {
 }
 
 service AddressBookService {
-  // Add a person to the address book.
+  // Add a person to the address book add more funtions to call.
   rpc AddPerson(Person) returns (Person);
   
   // Get a person from their name
