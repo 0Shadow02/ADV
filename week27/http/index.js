@@ -25,7 +25,7 @@ const fs = require("fs")
 //   fs.appendFileSync("./names.txt", "ryuji\n")
 
 // --> aapend async ..
-//   fs.appendFile("./contact.txt" , "email:\"dark@gmail.com\"\n" ,(err)=> console.log(err))
+  fs.appendFile("./contact.txt" , `email:\"dark@gmail.com\" created at ${new Date().getDate().toLocaleString()}\n` ,(err)=> console.log(err))
 
 
   console.log("done")
