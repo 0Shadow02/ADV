@@ -1,0 +1,14 @@
+Ispect from this page /settings
+Ispect from this page /favicon.ico
+Ispect from this page /about
+Ispect from this page /favicon.ico
+Ispect from this page /home
+Ispect from this page /favicon.ico
+Ispect from this page /signout
+Ispect from this page /favicon.ico
+Ispect from this page /contact
+Ispect from this page /favicon.ico
+Ispect from this page /contact and the cpu are 0
+Ispect from this page /favicon.ico and the cpu are 0
+Ispect from this page /contact and Number of CPU cores: 16
+Ispect from this page /favicon.ico and Number of CPU cores: 16
