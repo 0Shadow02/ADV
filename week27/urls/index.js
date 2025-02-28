@@ -17,7 +17,8 @@ const myServer = http.createServer((req, res)=>{
             res.end(`${JSON.stringify(myPathlog)}`)
             break;
         case "/about":
-            res.end(`hey there my name is shadow`)
+            const userdata= myPathlog.query
+            res.end(`hey there my name is ${userdata.name} , I am ${userdata.age} years old `)
                 break; 
         default:
             res.end(`${myPathlog}`)
