@@ -28,13 +28,53 @@ app.get("/api/users/:id",(req,res)=>{
 
 app.post("/api/users", (req, res)=>{
     const data = req.body
-    fs.writeFileSync("./MOCK_DATA.json",(data,res)=>{
+    users.push({...data , id: users.length + 1})
+    fs.writeFile("./MOCK_DATA.json",JSON.stringify(users),(err)=>{
        if (err){
             return res.status(500).send("error writing file")
         }
     })
-    console.log(body)
     res.send(users[1001])
 })
+app.patch("/api/users/:id", (req, res)=>{
+    const id = parseInt(req.params.id); 
+    const data = req.body; 
+
+    const userIndex = users.findIndex((user) => user.id === id);
+
+    if (userIndex === -1) {
+        return res.status(404).send("User not found");
+    }
+    
+    users[userIndex] = { ...users[userIndex], ...data };
+
+    fs.writeFile("./MOCK_DATA.json", JSON.stringify(users, null, 2), (err) => {
+        if (err) {
+            return res.status(500).send("Error writing file");
+        }
+        res.send("User updated successfully");
+    });
+})
+app.delete("/api/users/:id", (req, res) => {
+    const id = parseInt(req.params.id); // Get the ID from the request parameters
+
+    // Find the index of the user with the given ID
+    const userIndex = users.findIndex((user) => user.id === id);
+
+    if (userIndex === -1) {
+        return res.status(404).send("User not found"); // Handle case where user is not found
+    }
+
+    // Remove the user from the array
+    users.splice(userIndex, 1);
+
+    // Write the updated users array to the JSON file
+    fs.writeFile("./MOCK_DATA.json", JSON.stringify(users, null, 2), (err) => {
+        if (err) {
+            return res.status(500).send("Error writing file");
+        }
+        res.send("User deleted successfully"); // Send a success response
+    });
+});
 
 app.listen(port, ()=>{console.log("listening to the port 3000")})
